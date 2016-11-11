@@ -14,8 +14,8 @@ server.get('/', function (request, response) {
     username = request.query.username;
   }
 
-  if (username !== null && username.match(/^(http:|https:)?(\/\/)?(www.)?(telegram.me|vk.com|twitter.com|github.com)?(\/)?(@)?(\w+)(\/)?(.+)?$/) !== null) {
-    username = username.replace(/^(http:|https:)?(\/\/)?(www.)?(telegram.me|vk.com|twitter.com|github.com)?(\/)?(@)?(\w+)(\/)?(.+)?$/, '$7');
+  if (username !== null && username.match(/^(http:|https:)?(\/\/)?(www.)?(telegram.me|vk.com|twitter.com|github.com|xn--80adtgbbrh1bc.xn--p1ai|medium.com)?(\/)?(@)?([\w\.]+)(\/)?(.+)?$/) !== null) {
+    username = username.replace(/^(http:|https:)?(\/\/)?(www.)?(telegram.me|vk.com|twitter.com|github.com|xn--80adtgbbrh1bc.xn--p1ai|medium.com)?(\/)?(@)?([\w\.]+)(\/)?(.+)?$/, '$7');
   } else { username = null; }
 
   if (username !== null) {
