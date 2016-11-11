@@ -6,7 +6,7 @@
   "scripts": {
     "compile:babel": "babel ./src -d ./public",
     "watch:src": "npm run compile:babel -- -w",
-    "watch:compile": "nodemon -q --watch ./public ./public/index.js",
+    "watch:compile": "nodemon -q --watch ./public ./public/test.js",
     "watch": "START /b npm run watch:src && npm run watch:compile",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run compile:babel && node ./public/index.js"

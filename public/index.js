@@ -9,30 +9,22 @@ server.use(cors());
 
 server.get('/', function (request, response) {
 
-  var name = null;
+  var username = null;
 
-  if (request.query.hasOwnProperty('fullname') && typeof request.query.fullname === 'string') {
-    name = request.query.fullname;
+  if (request.query.hasOwnProperty('username') && typeof request.query.username === 'string') {
+    username = request.query.username;
   }
 
-  if (name !== null && name.match(/^([A-ZА-Я](\.|[a-zа-яó]+)\s?){1,3}$/) !== null) {
-    switch (name.split(' ').length) {
-      case 3:
-        name = name.split(' ')[2] + ' ' + name[0] + '. ' + name.split(' ')[1][0] + '.';
-        break;
-      case 2:
-        name = name.split(' ')[1] + ' ' + name[0] + '.';
-        break;
-      default:
-    }
+  if (username !== null && username.match(/^(http:|https:)?(\/\/)?(www.)?(telegram.me|vk.com|twitter.com|github.com)?(\/)?(@)?(\w+)(\/)?(.+)?$/) !== null) {
+    username = username.replace(/^(http:|https:)?(\/\/)?(www.)?(telegram.me|vk.com|twitter.com|github.com)?(\/)?(@)?(\w+)(\/)?(.+)?$/, '$7');
   } else {
-    name = null;
+    username = null;
   }
 
-  if (name !== null) {
-    response.send(name);
+  if (username !== null) {
+    response.send('@' + username);
   } else {
-    response.send('Invalid fullname');
+    response.send('Invalid username');
   }
 });
 
